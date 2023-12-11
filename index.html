@@ -72,7 +72,7 @@
 
         .site-info {
             padding: 20px;
-            text-align: center; /* Center the text */
+            text-align: center;
             flex-grow: 1;
         }
 
@@ -104,10 +104,17 @@
 
         .rectangle {
             width: 100%;
-            height: 10px; /* Adjust the height as needed */
-            background-color: #3498db; /* Rectangle color */
-            margin-top: 5px; /* Adjust the margin as needed */
-            border-radius: 3px; /* Optional: Add border-radius for rounded corners */
+            height: 10px;
+            background-color: #3498db;
+            margin-top: 5px;
+            border-radius: 3px;
+        }
+
+        /* Media Query for Small Screens */
+        @media only screen and (max-width: 600px) {
+            .site-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
