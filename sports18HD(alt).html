@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>sports 18 HD(alt)</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+  <style>
+    body {
+      margin: 0px
+    }
+
+    .jwplayer {
+      position: absolute !important
+    }
+
+    .jwplayer.jw-flag-aspect-mode {
+      min-height: 100%;
+      max-height: 100%
+    }
+  </style>
+</head>
+
+<body>
+  <div id="jwplayerDiv"></div>
+  <script type="text/javascript">
+    jwplayer("jwplayerDiv").setup({
+      file: "https://bpprod7linear.akamaized.net/bpk-tv/irdeto_com_Channel_1852/output/manifest.mpd", position: 'bottom',
+      "autostart": true,
+      "stretching": "",
+      "width": "100%",
+      type: "dash",
+      drm: {
+        "clearkey": {
+          "keyId": "192dd5f0779d5983a3aa18276a9fb719",
+          "key": "c1e859ff3b4fd02797cb8cdb72726b80"
+        }
+      }
+    });    
+  </script>
