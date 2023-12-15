@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sky Sports Cricket</title>
+    <script src="//cdn.jsdelivr.net/npm/clappr/dist/clappr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/clappr-stats/dist/clappr-stats.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/clappr-nerd-stats/dist/clappr-nerd-stats.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js"></script>
+    <script src="//cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/clappr-markers-plugin@latest/dist/clappr-markers-plugin.js"></script>
+</head>
+<body>
+    <div style="position: fixed; bottom: 0; right: 0; top: 0; left: 0; z-index: 999;" id="player"></div>
+
+    <script>
+        var markerInfo = [
+            [300, "first"],
+            [1200, "middle"],
+            [5700, "last"]
+        ];
+
+        var markers = [];
+
+        for (var i = 0; i < markerInfo.length; i++) {
+            var info = markerInfo[i];
+            markers.push(new ClapprMarkersPlugin.StandardMarker(info[0], info[1]));
+        }
+
+        window.onload = function () {
+            var player = new Clappr.Player({
+                source: "https://linear003-gb-dash1-prd-cf.cdn.skycdp.com/016a/Content/DASH_003_sd/Live/channel(skysportscricket)/manifest_sd.mpd",
+                parentId: '#player',
+                plugins: [
+                    ClapprNerdStats,
+                    ClapprStats,
+                    ClapprMarkersPlugin,
+                    LevelSelector,
+                    ChromecastPlugin,
+                    ClapprPip.PipButton,
+                    ClapprPip.PipPlugin,
+                    DashShakaPlayback, // Add the DASH plugin
+                ],
+                markersPlugin: {
+                    markers: markers,
+                    tooltipBottomMargin: 17 // optional
+                },
+                clapprNerdStats: {
+                    shortcut: ['command+shift+s', 'ctrl+shift+s'],
+                    iconPosition: 'top-right'
+                },
+                events: {
+                    onReady: function () {
+                        var plugin = this.getPlugin('click_to_pause');
+                        plugin && plugin.disable();
+                    },
+                },
+                height: '100vh',
+                width: '100vw',
+                autoPlay: true,
+                shakaConfiguration: {
+                    manifest: { retryParameters: { maxAttempts: Infinity } },
+                    streaming: { retryParameters: { maxAttempts: Infinity } },
+                    drm: {
+                        "clearKeys": {
+                            '0003f2a72d21efd159d45a3a74decd84': 'df0ec40586d641f3d4728ab5fd62adc3'
+                        }
+                    },
+                },
+            });
+        };
+    </script>
+</body>
+</html>
