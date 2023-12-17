@@ -57,12 +57,12 @@
     }
 
     .jwplayer {
-        position: absolute !important
-      }
+      position: absolute !important
+    }
 
-      .jwplayer.jw-flag-aspect-mode {
-        min-height: 100%;
-        max-height: 100%
+    .jwplayer.jw-flag-aspect-mode {
+      min-height: 100%;
+      max-height: 100%
     }
   </style>
 </head>
@@ -74,10 +74,10 @@
     <input type="text" id="manifest" name="manifest" placeholder="Enter MPD link" required>
 
     <label for="keyId">Key ID:</label>
-    <input type="text" id="keyId" name="keyId" placeholder="Enter Key ID" required>
+    <input type="text" id="keyId" name="keyId" placeholder="Enter Key ID">
 
     <label for="key">Key:</label>
-    <input type="text" id="key" name="key" placeholder="Enter Key" required>
+    <input type="text" id="key" name="key" placeholder="Enter Key">
 
     <input type="button" value="Play Video" onclick="playVideo()">
   </form>
@@ -92,19 +92,25 @@
       var keyId = keyIdInput.value;
       var key = keyInput.value;
 
-      jwplayer("jwplayerDiv").setup({
+      var playerConfig = {
         file: manifest,
-        "autostart": true,
-        "stretching": "",
-        "width": "100%",
+        autostart: true,
+        stretching: "",
+        width: "100%",
         type: "dash",
-        drm: {
+      };
+
+      if (keyId && key) {
+        // DRM settings only if both keyId and key are provided
+        playerConfig.drm = {
           clearkey: {
             keyId: keyId,
-            key: key
-          }
-        }
-      });
+            key: key,
+          },
+        };
+      }
+
+      jwplayer("jwplayerDiv").setup(playerConfig);
 
       // Hide the form after starting the video
       var videoForm = document.getElementById("videoForm");
