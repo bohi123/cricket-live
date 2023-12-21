@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,12 +117,41 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+      .github-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .github-button:hover {
+        background-color: #45a049;
+      }
+
+      .github-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Cricket Stream</h1>
+        
+      <h1>Cricket Stream</h1>
+      <!-- GitHub Star Button -->
+      <a href="https://github.com/KratosRepo/cricket-live" class="github-button" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="github-icon">
+        Star us on GitHub
+      </a>
+
     </header>
 
     <div class="container">
