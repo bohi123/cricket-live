@@ -1,12 +1,8 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket Stream</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket Stream</title>
+  <style>
       body {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           background-color: #333;
@@ -46,18 +42,7 @@
           display: grid;
           gap: 10px;
           margin-top: 10px;
-      }
-
-      /* Default grid for desktop */
-      .site-grid {
-          grid-template-columns: repeat(7, 1fr); /* Show 5 cards in a row for desktop */
-      }
-
-      /* Media Query for Small Screens */
-      @media only screen and (max-width: 600px) {
-          .site-grid {
-              grid-template-columns: repeat(3, 1fr); /* Show 3 cards in a row for mobile */
-          }
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       }
 
       .site-card {
@@ -70,8 +55,7 @@
           color: #ffffff;
           display: flex;
           flex-direction: column;
-          width: 155px; /* Adjust the width as needed */
-          margin: 0 auto; /* Center the cards */
+          margin: 0 auto;
       }
 
       .site-card:hover {
@@ -82,17 +66,18 @@
           width: 100%;
           height: auto;
           object-fit: cover;
+          border-radius: 18px 18px 0 0;
       }
 
       .site-info {
-          padding: 10px; /* Decrease the padding */
+          padding: 10px;
           text-align: center;
           flex-grow: 1;
       }
 
       .site-info h2 {
           margin: 0;
-          font-size: 1.2em; /* Adjust the font size as needed */
+          font-size: 1.2em;
       }
 
       .site-link {
@@ -115,7 +100,7 @@
       .announcement {
           background-color: #444;
           color: #ffffff;
-          padding: 10px; /* Decrease the padding */
+          padding: 10px;
           margin: 15px 0;
           border-radius: 20px;
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -123,7 +108,7 @@
 
       .announcement p {
           margin: 0;
-          font-size: 1.0em; /* Adjust the font size as needed */
+          font-size: 1.0em;
       }
 
       .rectangle {
@@ -132,13 +117,6 @@
           background-color: #3498db;
           margin-top: 5px;
           border-radius: 6px;
-      }
-
-      /* Media Query for Small Screens */
-      @media only screen and (max-width: 600px) {
-          .site-card {
-              width: 100%; /* Make the cards full width on small screens */
-          }
       }
 
       .github-button {
@@ -164,20 +142,28 @@
           margin-right: 10px;
       }
 
-    </style>
+      /* Media Query for Small Screens */
+      @media only screen and (max-width: 600px) {
+          .site-card {
+              width: 100%;
+          }
+
+          .site-grid {
+              grid-template-columns: repeat(3, 1fr);
+          }
+      }
+  </style>
 </head>
 
 <body>
-    <header>
-
+  <header>
       <h1>Cricket Stream</h1>
       <!-- GitHub Star Button -->
       <a href="https://github.com/KratosRepo/cricket-live" class="github-button" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="github-icon">
-        Star us on GitHub
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="github-icon">
+          Star us on GitHub
       </a>
-
-    </header>
+  </header>
 
     <div class="container">
         <div class="announcement">
